@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.servicios;
+package com.example.SpringEgg.servicios;
 
-import com.example.entidades.Editorial;
-import com.example.exepciones.MiException;
-import com.example.repositorio.EditorialRepositorio;
+import com.example.SpringEgg.entidades.Editorial;
+import com.example.SpringEgg.repositorio.EditorialRepositorio;
+import com.example.SpringEgg.exepciones.MiException;
 import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,5 @@
 
-package com.example.entidades;
+package com.example.SpringEgg.entidades;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

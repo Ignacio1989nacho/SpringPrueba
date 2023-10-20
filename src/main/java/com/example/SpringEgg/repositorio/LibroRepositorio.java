@@ -1,7 +1,8 @@
 
-package com.example.repositorio;
+package com.example.SpringEgg.repositorio;
 
-import com.example.entidades.Libro;
+import com.example.SpringEgg.entidades.Libro;
+
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

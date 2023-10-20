@@ -2,15 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.example.servicios;
+package com.example.SpringEgg.servicios;
 
-import com.example.entidades.Autor;
-import com.example.entidades.Editorial;
-import com.example.entidades.Libro;
-import com.example.exepciones.MiException;
-import com.example.repositorio.AutorRepositorio;
-import com.example.repositorio.EditorialRepositorio;
-import com.example.repositorio.LibroRepositorio;
+import com.example.SpringEgg.entidades.Autor;
+import com.example.SpringEgg.entidades.Editorial;
+import com.example.SpringEgg.entidades.Libro;
+import com.example.SpringEgg.repositorio.AutorRepositorio;
+import com.example.SpringEgg.repositorio.EditorialRepositorio;
+import com.example.SpringEgg.repositorio.LibroRepositorio;
+
+import com.example.SpringEgg.exepciones.MiException;
 import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,8 +37,8 @@ public class LibroServicio {
    
         validacion(isbn,titulo,ejemplares,idAutor,idEditorial);
         Libro libro = new Libro();
-        Autor autor = autorRepositorio.findById(idAutor).get();
-        Editorial editorial = editorialRepositorio.findById(idAutor).get();
+        Autor autor = (Autor) autorRepositorio.findById(idAutor).get();
+        Editorial editorial = (Editorial) editorialRepositorio.findById(idAutor).get();
 
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
