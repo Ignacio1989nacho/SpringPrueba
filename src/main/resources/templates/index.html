@@ -10,6 +10,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <header th:replace="~{HeaderFooter/plantilla ::encabezado}"></header>
         <div>HOLA INICIO</div>
+        <br/>    
+            <a th:href="@{/autor/registrar}">REGISTRAR AUTOR</a>
+            <br/> 
+            <a th:href="@{/editorial/registrar}">REGISTRAR EDITORIAL</a>
+            <br/> 
+            <a th:href="@{/libro/registrar}">REGISTRAR LIBRO</a>
+            <br/> 
+        <footer th:replace="~{HeaderFooter/plantilla ::piepagina}"/>
     </body>
 </html>

@@ -3,46 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.example.SpringEgg.controladores;
-import com.example.SpringEgg.exepciones.MiException;
 
-import com.example.SpringEgg.servicios.AutorServicio;
+import com.example.SpringEgg.exepciones.MiException;
+import com.example.SpringEgg.servicios.EditorialServicio;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/autor")//localhost:8080/pruebabbdd
 @Slf4j
-public class ControladorAutor {
+@RequestMapping("/editorial")//localhost:8080/editorial
+public class ControladorEditorial {
 
     @Autowired
-    private AutorServicio autorServicio;
+    private EditorialServicio editorialServicio;
 
-    @GetMapping("/registrar")
-    public String registrar() { //localhost:8080/pruebabbdd/registrar  
-        log.info("autor");
-        return "autor.html";
+    @GetMapping("/registrar")//localhost:8080/editorial/registrar
+    public String crearEditorial() {
+        log.info("editorial");
+        return "editorial.html";
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre,ModelMap modelo) {
-        System.out.println("EL NOMBRE ES: " + nombre);
+        System.out.println("EL NOMBRE DE LA EDITORIAL ES: " + nombre);
         try {
-            autorServicio.crearAutor(nombre);
+            editorialServicio.crearEditorial(nombre);
             System.out.println("POST RECIBIDO NOMBRE: " + nombre);
-            modelo.put("exito","El autor fue cargado correctamente!");
-            log.info("AUTOR REGISTRO CORRECTO");
+            modelo.put("exito","La editorial fue cargada correctamente!");
+            log.info("EDITORIAL REGISTRO CORRECTO");
         } catch (MiException ex) {
             System.out.println("");
-            modelo.put("error", ex.getMessage());
-            return "autor.html";
+            modelo.put("error",ex.getMessage());
+            return "editorial.html";
         }
         return "index.html";
     }
+
 }

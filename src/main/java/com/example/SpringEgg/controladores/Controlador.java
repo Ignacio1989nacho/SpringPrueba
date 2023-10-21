@@ -25,34 +25,9 @@ public class Controlador {
         return "index.html";
     }
    
-    @GetMapping("/autor")
-    public String autor() {
-        log.info("AUTOR");
-        return "autor.html";
-    }
+  
    
 
-//   @Autowired
-//    private AutorServicio autorServicio;
-//
-//    @GetMapping("/registrar")
-//    public String registrar() { //localhost:8080/autor/registrar  
-//       
-//        return "autor.html";
-//    }
-//
-//    @PostMapping("/registro")
-//    public String registro(@RequestParam String nombre) {
-//        System.out.println("EL NOMBRE ES: " + nombre);
-//        try {
-//            autorServicio.crearAutor(nombre);
-//            System.out.println("POST RECIBIDO NOMBRE: "+nombre);
-//            log.info("AUTOR REGISTRO CORRECTO");
-//        } catch (MiException ex) {
-//            System.out.println("");
-//            return "autor.html";
-//        }
-//        return "index.html";
-//    }
+
 
 }

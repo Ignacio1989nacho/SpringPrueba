@@ -10,14 +10,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>AUTOR</div>
+        <div>EDITORIAL</div>
         
-        <form action="/autor/registro" method="POST">
+        <form action="/editorial/registro" method="POST">
             <div>
-            <input type="text" name="nombre" placeholder="nombre autor" />
-            <button type="submit">SUBIR</button>
+            <input type="text" name="nombre" placeholder="nombre editorial" />
             </div>
-            
+            <button type="submit">SUBIR</button>
             <div th:if="${error != null}" class="mensajeError">
                 <h5>ERROR</h5>
                 <p th:text="${error}"></p>
@@ -25,7 +24,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div th:if="${exito != null}"class="mensajeExito">
                 <h5>EXITO</h5>
                 <p th:text="${exito}"></p>
-            </<div>
+            </<div>            
+            
         </form>
     </body>
 </html>

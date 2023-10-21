@@ -12,20 +12,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <div>AUTOR</div>
         
-        <form action="/autor/registro" method="POST">
+        <form action="/libro/registro" method="POST">
             <div>
-            <input type="text" name="nombre" placeholder="nombre autor" />
+            <input type="text" name="titulo" placeholder="titulo" />
+            <input type="number" name="isbn" placeholder="isbn" />
+            <input type="number" name="ejemplares" placeholder="ejemplares" />
+            <input type="number" name="idAutor" placeholder="id autor" />
+            <input type="number" name="idEditorial" placeholder="id editorial" />
+
             <button type="submit">SUBIR</button>
             </div>
             
             <div th:if="${error != null}" class="mensajeError">
                 <h5>ERROR</h5>
                 <p th:text="${error}"></p>
-            </<div>
+             </<div>
             <div th:if="${exito != null}"class="mensajeExito">
                 <h5>EXITO</h5>
                 <p th:text="${exito}"></p>
-            </<div>
+             </<div>
         </form>
     </body>
 </html>
+
