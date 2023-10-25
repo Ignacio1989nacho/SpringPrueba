@@ -37,8 +37,8 @@ public class LibroServicio {
    
         validacion(isbn,titulo,ejemplares,idAutor,idEditorial);
         Libro libro = new Libro();
-        Autor autor = (Autor) autorRepositorio.findById(idAutor).get();
-        Editorial editorial = (Editorial) editorialRepositorio.findById(idAutor).get();
+        Autor autor =  autorRepositorio.findById(idAutor).get();
+        Editorial editorial =  editorialRepositorio.findById(idEditorial).get();
 
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);

@@ -3,14 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.example.SpringEgg.controladores;
+
+import com.example.SpringEgg.entidades.Autor;
 import com.example.SpringEgg.exepciones.MiException;
 
 import com.example.SpringEgg.servicios.AutorServicio;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +35,12 @@ public class ControladorAutor {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre,ModelMap modelo) {
+    public String registro(@RequestParam String nombre, ModelMap modelo) {
         System.out.println("EL NOMBRE ES: " + nombre);
         try {
             autorServicio.crearAutor(nombre);
             System.out.println("POST RECIBIDO NOMBRE: " + nombre);
-            modelo.put("exito","El autor fue cargado correctamente!");
+            modelo.put("exito", "El autor fue cargado correctamente!");
             log.info("AUTOR REGISTRO CORRECTO");
         } catch (MiException ex) {
             System.out.println("");
@@ -45,4 +49,19 @@ public class ControladorAutor {
         }
         return "index.html";
     }
+
+    @GetMapping("/lista")
+    public String listaAutores(ModelMap modelo) {
+        List<Autor> listaAutores = autorServicio.listarAutor();
+        modelo.addAttribute("listaAutores", listaAutores);
+
+        return "autor_listado.html";
+    }
+    
+    @GetMapping("/modificar/{id}")
+    public String modificar(@PathVariable String id, ModelMap modelo){
+        modelo.put("autor",autorServicio.getOne(id));
+        return "autor_modificar.html";
+    }
+    
 }

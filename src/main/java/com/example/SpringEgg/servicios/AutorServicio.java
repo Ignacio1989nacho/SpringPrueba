@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
 public class AutorServicio {
@@ -23,8 +25,8 @@ public class AutorServicio {
 
     @Transactional
     public void crearAutor(String nombre) throws MiException {
-        
-        validacionNombre( nombre);
+
+        validacionNombre(nombre);
         Autor autor = new Autor();
         autor.setNombre(nombre);
 
@@ -32,7 +34,7 @@ public class AutorServicio {
     }
 
     public List<Autor> listarAutor() {
-        
+
         List<Autor> listaAutor = new ArrayList();
         listaAutor = autorRepositorio.findAll();
         return listaAutor;
@@ -52,6 +54,11 @@ public class AutorServicio {
         }
     }
 
+    @Transactional
+    public Autor getOne(String id) {
+        return autorRepositorio.getOne(id);
+    }
+
     @SuppressWarnings("null")
     private void validacion(String nombre, String id) throws MiException {
         if (nombre.isEmpty() || nombre == null) {
@@ -69,4 +76,5 @@ public class AutorServicio {
             throw new MiException("ERROR EN EL CAMPO NOMBRE");
         }
     }
+
 }

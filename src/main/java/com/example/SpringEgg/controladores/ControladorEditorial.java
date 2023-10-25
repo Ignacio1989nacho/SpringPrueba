@@ -4,8 +4,10 @@
  */
 package com.example.SpringEgg.controladores;
 
+import com.example.SpringEgg.entidades.Editorial;
 import com.example.SpringEgg.exepciones.MiException;
 import com.example.SpringEgg.servicios.EditorialServicio;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,19 +32,25 @@ public class ControladorEditorial {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre,ModelMap modelo) {
+    public String registro(@RequestParam String nombre, ModelMap modelo) {
         System.out.println("EL NOMBRE DE LA EDITORIAL ES: " + nombre);
         try {
             editorialServicio.crearEditorial(nombre);
             System.out.println("POST RECIBIDO NOMBRE: " + nombre);
-            modelo.put("exito","La editorial fue cargada correctamente!");
+            modelo.put("exito", "La editorial fue cargada correctamente!");
             log.info("EDITORIAL REGISTRO CORRECTO");
         } catch (MiException ex) {
             System.out.println("");
-            modelo.put("error",ex.getMessage());
+            modelo.put("error", ex.getMessage());
             return "editorial.html";
         }
         return "index.html";
     }
 
+    @GetMapping("/lista")
+    public String listaEditorial(ModelMap modelo) {
+        List<Editorial> listadoEditorial = editorialServicio.listarEditorial();
+        modelo.addAttribute("listadoEditorial", listadoEditorial);
+        return "listado_editorial.html";
+    }
 }
