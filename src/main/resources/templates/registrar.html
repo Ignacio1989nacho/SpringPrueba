@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>REGISTRAR USUARIO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form class="formulario" th:action="@{/registro}" method="post">
+            <label for="name" >Nombre:</label><br>
+            <input type="text" id="name" name="nombre" th:value="${nombre}"><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" th:value="${email}"><br>
+            <label for="name" >Contraseña:</label><br>
+            <input type="password" id="password" name="password" th:value="${password}"><br>
+            <label for="password">Contraseña Nuevamente:</label><br>
+            <input type="password" id="passwordDos" name="passwordDos" th:value="${passwordDos}"><br>
+            <input type="submit" value="Registrar">
+        </form>
+    </body>
+</html>

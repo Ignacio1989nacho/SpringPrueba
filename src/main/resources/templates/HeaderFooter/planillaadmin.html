@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
@@ -26,7 +25,14 @@
           <hr>
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-
+             <a th:href="@{/autor/registrar}">REGISTRAR AUTOR</a>
+            </li>
+            <li>
+              <a th:href="@{/editorial/registrar}">REGISTRAR EDITORIAL</a>
+            </li>
+            <li>
+             <a th:href="@{/libro/registrar}">REGISTRAR LIBRO</a>
+            </li>
             <li>
              <a th:href="@{autor/lista}">LISTA AUTORES</a>
             </li>

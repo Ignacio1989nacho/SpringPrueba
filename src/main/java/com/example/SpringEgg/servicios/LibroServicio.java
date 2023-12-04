@@ -33,12 +33,11 @@ public class LibroServicio {
     //METODOS QUE MODIFIQUEN LA BBDD SI O SI TRANSACTIONAL!
     @Transactional
     public void crearLibro(Long isbn, String titulo, Integer ejemplares, String idAutor, String idEditorial) throws MiException {
-        
-   
-        validacion(isbn,titulo,ejemplares,idAutor,idEditorial);
+
+        validacion(isbn, titulo, ejemplares, idAutor, idEditorial);
         Libro libro = new Libro();
-        Autor autor =  autorRepositorio.findById(idAutor).get();
-        Editorial editorial =  editorialRepositorio.findById(idEditorial).get();
+        Autor autor = autorRepositorio.findById(idAutor).get();
+        Editorial editorial = editorialRepositorio.findById(idEditorial).get();
 
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
@@ -59,10 +58,10 @@ public class LibroServicio {
     }
 
     @Transactional
-    public void modificarLibro(Long isbn, String titulo, String idAutor, String idEditorial, Integer ejemplares)throws MiException {
-        
-        validacion(isbn,titulo,ejemplares,idAutor,idEditorial);
-        
+    public void modificarLibro(Long isbn, String titulo, String idAutor, String idEditorial, Integer ejemplares) throws MiException {
+
+        validacion(isbn, titulo, ejemplares, idAutor, idEditorial);
+
         Optional<Libro> respuesta = libroRepositorio.findById(isbn);
         Optional<Autor> respuestaAutor = autorRepositorio.findById(idAutor);
         Optional<Editorial> respuestaEditorial = editorialRepositorio.findById(idEditorial);
@@ -85,10 +84,10 @@ public class LibroServicio {
             libroRepositorio.save(libro);
         }
     }
-    
-    private void validacion(Long isbn,String titulo,Integer ejemplares,String idAutor,String idEditorial) throws MiException{
-    
-         if (isbn == null) {
+
+    private void validacion(Long isbn, String titulo, Integer ejemplares, String idAutor, String idEditorial) throws MiException {
+
+        if (isbn == null) {
             throw new MiException("el isbn no puede ser nulo");
         }
         if (titulo.isEmpty() || titulo == null) {
@@ -103,6 +102,6 @@ public class LibroServicio {
         if (idEditorial.isEmpty() || idEditorial == null) {
             throw new MiException("la editorial no puede ser nulo o estar vacio");
         }
-    
+
     }
 }
